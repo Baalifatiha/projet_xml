@@ -1,0 +1,39 @@
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet"  href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}"/>
+
+  <link rel="stylesheet"  href="{{ url_for('static',filename='vendor/boxicons/css/boxicons.min.css') }}"/>
+  <!-- Template Main CSS File -->
+ <link rel="stylesheet"  href="{{ url_for('static',filename='css/style.css') }}"/>
+
+<title>validation par DTD</title>
+
+ <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><a href="index.html">Validateur.xml</a></h1>
+    </div>
+  </header><!-- End Header -->
+   <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+             <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-4 mt-5">
+                        <label for="" class="form-label h4" style=" text-align: center; color:#ffbf00;">Importer votre fichier DTD :</label>
+                        <input type="file" class="form-control mb-4" name="fileDTD" style="background-color: transparent;color: #fff;margin-top: 60px;border-radius: 10px;"  accept=".dtd"/>
+                    </div>
+                    <button type="submit" class="classbutton col-12" name="submit" style="margin-top: 60px;border-radius: 10px;border:none">Convertir vers  XSD</button>
+                  </form>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="../static/img/why-us.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

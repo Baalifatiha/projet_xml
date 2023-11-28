@@ -1,0 +1,53 @@
+<link rel="stylesheet"  href="{{ url_for('static',filename='css/style.css') }}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='codemirror/lib/codemirror.css') }}">
+    <script type="text/javascript" src="{{ url_for('static',filename='codemirror/lib/codemirror.js') }}"></script>
+{% block titre %}
+<title>validation par XML Schema</title>
+{% endblock %}
+{% block body %}
+     <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><a href="index.html">Validateur.xml</a></h1>
+    </div>
+  </header><!-- End Header -->
+<h1 style="text-align: center; margin-top: 60px; color: white">Validation par XML Schema</h1>
+<div id="divPXS">
+   <a class="buttXS" id="FXS" style=" text-align: center; color:#ffbf00;">Exporter le fichier XML Schema et le fichier XML</a>
+</div>
+    <div class="bg-dark text-white">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="container">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="c1">
+                        <h2 class="form-label h4" style="text-align: center; margin-top: 2%; color:#90adc4">XML:</h2>
+                         <center>
+                                <input type="file" class="Bfile" name = "fileXML"  accept=".xml" />
+                        </center>
+                        <h2  class="form-label h4" style="text-align: center; margin-top: 2%;color:#90adc4">XSD:</h2>
+                         <center>
+                                <input type="file" class="Bfile" name = "fileXSD"  accept=".xsd" />
+                        </center>
+                    </div>
+                     <center>
+                            <div id="resultat"></div><br>
+                            <h2  class="form-label h4" style="text-align: center; margin-top: 2%;color:#90adc4">   {{ res }}</h2>
+                            <button type="submit" class="classbutton" name="submit" style="border-radius: 10px;border:none">Validate</button>
+                        </center>
+                  </form>
+                {% if res=='Le document est valide' %}
+                {{ res }}
+                 {% endif  %}
+               {% if res=='Le document est invalide' %}
+
+
+                 {% endif  %}
+            </div>
+
+        </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+    </script>
+{% endblock %}

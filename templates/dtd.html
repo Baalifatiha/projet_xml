@@ -1,0 +1,84 @@
+  <link rel="stylesheet"  href="{{ url_for('static',filename='css/style.css') }}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='codemirror/lib/codemirror.css') }}">
+    <script type="text/javascript" src="{{ url_for('static',filename='codemirror/lib/codemirror.js') }}"></script>
+
+<title>validation par DTD</title>
+
+
+{% block body %}
+
+ <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><a href="index.html">Validateur.xml</a></h1>
+    </div>
+  </header><!-- End Header -->
+ <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                  <div id="FdtdExt" >
+                      <h1 style="text-align: center; margin-top: 60px;">Validation par DTD</h1><br>
+                       <h2 id="dtdExtfile"  style=" text-align: center; color:#ffbf00;">Exporter fichier de dtd extern</h2>
+                     <form id="form_FdtdExt" enctype = "multipart/form-data">
+                        <div class="mb-3 mt-5">
+                            <h2 style="text-align: center; margin-top: 2%;">dtd:</h2>
+                            <center>
+                                <input type = "file" id="fdtdEx" name = "file1" class="Bfile form-control"  accept=".dtd" />
+                            </center>
+                            <h2 style="text-align: center;">xml:</h2>
+                            <center>
+                                <input type = "file" id="fxmlEx" name = "file2" class="Bfile" accept=".xml"/>
+                            </center>
+                        </div>
+                        <center>
+                            <div id="resultat"></div>
+                            <input type = "submit" value="Valider" class="classbutton" style="margin-top: 10px;border-radius: 10px;border:none"/><br><br><br><br><br>
+
+                        </center>
+                     </form>
+                  </div>
+          </div>
+        </div>
+    </div>
+ </section><!-- End Hero -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+
+     ///////////////////  file dtd extern   /////////////////////////
+      $('#form_FdtdExt').on('submit', function (e){
+            e.preventDefault();
+            $('#resultat').empty();
+            var form_data = new FormData();
+            form_data.append('file1', $('#fdtdEx')[0].files[0]);
+            form_data.append('file2', $('#fxmlEx')[0].files[0]);
+            // form_data = $('#form_FdtdExt').serializeArray();
+            $(function () {
+              $.ajax({
+                type: 'POST',
+                url: '/indtdfile',
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    if(data.result){
+                        console.log("Valid")
+                        //alert("Valid Files")
+                        $('#resultat').append("<h2>Le document est valide</h2>")
+                    }
+                    else{
+                        $('#resultat').append("<h2>Le document est invalide</h2></font>")
+                    }
+                },
+                error: function(){
+                    console.log("Error")
+                }
+              });
+            });
+        })
+    </script>
+{% endblock %}
