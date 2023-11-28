@@ -11,7 +11,7 @@ This is a web application built using the Django web framework and several Pytho
 The following dependencies are required to run the application:     
 
 - Python 3.x   
-- Django 3.x   
+- flasx 3.x   
 - lxml   
 - xmltodict   
 Additionally, if you want to use the XSD to DTD transformation feature, Perl must be installed on your operating system.    
